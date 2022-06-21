@@ -19,12 +19,10 @@ void serve(int s)
     char buffer[MSGSIZE];
     int size, i = 0;
     struct stat buf;
-    const char espacio[2] = " ";
-    const char punto[2] = ".";
+    const char space[2] = " ";
     char *token;
-    char *token2;
     char filetosend[100];
-    char fileType[100];
+    char *fileType[100];
     FILE *sin = fdopen(s, "r");
     FILE *sout = fdopen(s, "w");
     int status;
@@ -37,7 +35,7 @@ void serve(int s)
         if (i == 1)
         {
             int indice = 1;
-            token = strtok(buffer, espacio);
+            token = strtok(buffer, space);
             while (token != NULL)
             {
                 if (indice == 2)
