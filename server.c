@@ -21,7 +21,7 @@ void serve(int s)
     struct stat buf;
     const char space[2] = " ";
     char *token;
-    char filetosend[100];
+    char *filetosend[100];
     char *fileType[100];
     FILE *sin = fdopen(s, "r");
     FILE *sout = fdopen(s, "w");
@@ -43,7 +43,6 @@ void serve(int s)
                     if (strcmp(strcpy(filetosend, token), "/") == 0)
                     {
                         strcpy(filetosend, "listoffiles.txt");
-                        strcpy(fileType, ".txt");
                         char *filename = "listoffiles.txt";
                         FILE *fp = fopen(filename, "w");
                         if (fp == NULL)
