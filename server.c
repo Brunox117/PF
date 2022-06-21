@@ -96,7 +96,7 @@ void serve(int s)
     contiene = strstr(filetosend, ".html");
     if (contiene)
     {
-        sprintf("Content-Type: text/html%s\r\n");
+        sprintf("Content-Type:", "text/html%s\r\n");
         fputs(buffer, sout);
         //strcpy(fileType, "Content-Type: text/html");
     }
@@ -104,7 +104,7 @@ void serve(int s)
     contiene2 = strstr(filetosend, ".jpg");
     if (contiene2)
     {
-        sprintf("Content-Type: image/jpg%s\r\n");
+        sprintf("Content-Type:", "image/jpg%s\r\n");
         fputs(buffer, sout);
         //strcpy(fileType, "Content-Type: image/jpg");
     }
@@ -112,7 +112,7 @@ void serve(int s)
     contiene3 = strstr(filetosend, ".png");
     if (contiene3)
     {
-        sprintf("Content-Type: image/png%s\r\n");
+        sprintf("Content-Type:", "image/png%s\r\n");
         fputs(buffer, sout);
         //strcpy(fileType, "Content-Type: image/png");
     }
@@ -120,7 +120,7 @@ void serve(int s)
     contiene4 = strstr(filetosend, ".txt");
     if (contiene4)
     {
-        sprintf("Content-Type: text/plain%s\r\n");
+        sprintf("Content-Type:", "text/plain%s\r\n");
         fputs(buffer, sout);
         //strcpy(fileType, "Content-Type: text/plain");
     }
