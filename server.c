@@ -21,7 +21,7 @@ void serve(int s)
     struct stat buf;
     const char space[2] = " ";
     char *token;
-    char *filetosend[100];
+    char filetosend[100];
     char *fileType[100];
     FILE *sin = fdopen(s, "r");
     FILE *sout = fdopen(s, "w");
@@ -43,6 +43,7 @@ void serve(int s)
                     if (strcmp(strcpy(filetosend, token), "/") == 0)
                     {
                         strcpy(filetosend, "listoffiles.txt");
+                        strcpy(fileType,".txt");
                         char *filename = "listoffiles.txt";
                         FILE *fp = fopen(filename, "w");
                         if (fp == NULL)
@@ -68,6 +69,7 @@ void serve(int s)
                     else
                     {
                         strcpy(filetosend, token + 1);
+                        strcpy(fileType,token+1);
                     }
                 }
                 indice++;
@@ -90,7 +92,7 @@ void serve(int s)
     sprintf(buffer, "Date: Fri, 31 Dec 1999 23:59:59 GMT\r\n");
     fputs(buffer, sout);
     char *contiene;
-    contiene = strstr(filetosend, ".html");
+    contiene = strstr(fileType, ".html");
     if (contiene)
     {
         sprintf("Content-Type:", "text/html\r\n");
@@ -99,7 +101,7 @@ void serve(int s)
         //strcpy(fileType, "Content-Type: text/html");
     }
     char *contiene2;
-    contiene2 = strstr(filetosend, ".jpg");
+    contiene2 = strstr(fileType, ".jpg");
     if (contiene2)
     {
         sprintf("Content-Type:", "image/jpg\r\n");
@@ -107,7 +109,7 @@ void serve(int s)
         //strcpy(fileType, "Content-Type: image/jpg");
     }
     char *contiene3;
-    contiene3 = strstr(filetosend, ".png");
+    contiene3 = strstr(fileType, ".png");
     if (contiene3)
     {
         sprintf("Content-Type:", "image/png\r\n");
@@ -115,7 +117,7 @@ void serve(int s)
         //strcpy(fileType, "Content-Type: image/png");
     }
     char *contiene4;
-    contiene4 = strstr(filetosend, ".txt");
+    contiene4 = strstr(fileType, ".txt");
     if (contiene4)
     {
         sprintf("Content-Type:", "text/plain\r\n");
