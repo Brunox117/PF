@@ -125,8 +125,6 @@ void serve(int s)
         fputs(buffer, sout);
         //strcpy(fileType, "Content-Type: text/plain");
     }
-    sprintf("%s\r\n", fileType);
-    fputs(buffer, sout);
 
     stat(filetosend, &buf);
     printf("Size -----------> %d\n", (int)buf.st_size);
