@@ -72,7 +72,7 @@ void serve(int s)
                     }
                 }
                 indice++;
-                token = strtok(NULL, espacio);
+                token = strtok(NULL, space);
             }
             //==========================================
 
