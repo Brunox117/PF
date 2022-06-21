@@ -98,6 +98,7 @@ void serve(int s)
     {
         sprintf("Content-Type:", "text/html%s\r\n");
         fputs(buffer, sout);
+        fprintf("EL TIPO DE ARCHIVO SE MANDO COMO HTML");
         //strcpy(fileType, "Content-Type: text/html");
     }
     char *contiene2;
