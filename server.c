@@ -22,7 +22,7 @@ void serve(int s)
     const char space[2] = " ";
     char *token;
     char filetosend[100];
-    char *fileType[100];
+    char fileType[100];
     FILE *sin = fdopen(s, "r");
     FILE *sout = fdopen(s, "w");
     int status;
