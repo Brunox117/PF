@@ -77,30 +77,7 @@ void serve(int s)
                 token = strtok(NULL, espacio);
             }
             //==========================================
-            char *contiene;
-            contiene = strstr(filetosend, ".html");
-            if (contiene)
-            {
-                strcpy(fileType,"Content-Type: text/html");
-            }
-            char *contiene2;
-            contiene2 = strstr(filetosend, ".jpg");
-            if (contiene2)
-            {
-                strcpy(fileType,"Content-Type: image/jpg");
-            }
-            char *contiene3;
-            contiene3 = strstr(filetosend, ".png");
-            if (contiene3)
-            {
-                strcpy(fileType,"Content-Type: image/png");
-            }
-            char *contiene4;
-            contiene4 = strstr(filetosend, ".txt");
-            if (contiene4)
-            {
-                strcpy(fileType,"Content-Type: text/plain");
-            }
+
             //==========================================
         }
         if (buffer[0] == '\r' && buffer[1] == '\n')
@@ -115,10 +92,41 @@ void serve(int s)
 
     sprintf(buffer, "Date: Fri, 31 Dec 1999 23:59:59 GMT\r\n");
     fputs(buffer, sout);
-
-    sprintf("%s\r\n",fileType);
+    char *contiene;
+    contiene = strstr(filetosend, ".html");
+    if (contiene)
+    {
+        sprintf("Content-Type: text/html%s\r\n");
+        fputs(buffer, sout);
+        //strcpy(fileType, "Content-Type: text/html");
+    }
+    char *contiene2;
+    contiene2 = strstr(filetosend, ".jpg");
+    if (contiene2)
+    {
+        sprintf("Content-Type: image/jpg%s\r\n");
+        fputs(buffer, sout);
+        //strcpy(fileType, "Content-Type: image/jpg");
+    }
+    char *contiene3;
+    contiene3 = strstr(filetosend, ".png");
+    if (contiene3)
+    {
+        sprintf("Content-Type: image/png%s\r\n");
+        fputs(buffer, sout);
+        //strcpy(fileType, "Content-Type: image/png");
+    }
+    char *contiene4;
+    contiene4 = strstr(filetosend, ".txt");
+    if (contiene4)
+    {
+        sprintf("Content-Type: text/plain%s\r\n");
+        fputs(buffer, sout);
+        //strcpy(fileType, "Content-Type: text/plain");
+    }
+    sprintf("%s\r\n", fileType);
     fputs(buffer, sout);
-    
+
     stat(filetosend, &buf);
     printf("Size -----------> %d\n", (int)buf.st_size);
 
